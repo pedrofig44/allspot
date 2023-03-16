@@ -11,10 +11,10 @@
                     <div class="user-dashboard loader-holder">
                         <div class="user-holder">
                     <h4 class="text-center" style="margin-bottom: 0;">Bem-Vindos ao Allspot</h4>
-                    <p class="text-center">Por favor preenche o formulário para poder registar-se como utilizador.</p>
+                    <p class="text-center">Por favor preenche o formulário para poder iniciar o processo de registo da sua loja.</p>
                     <hr>
                     <div id="restaurant-sets-holder">
-                        <form action="{% url 'registerUser' %}" class="form-fields-set foodbakery-dev-restaurant-form" method="post">
+                        <form action="{% url 'registerVendor' %}" class="form-fields-set foodbakery-dev-restaurant-form" method="post">
                             {% csrf_token %}
                             <ul class="register-add-restaurant-tab-container restaurant-information-tab-container">
                                 <li>
@@ -35,6 +35,11 @@
                                                         </div>
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                             <div class="field-holder">
+                                                                <label>Nome do Serviço/Loja</label>{{v_form.vendor_name}}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="field-holder">
                                                                 <label>Username </label>{{form.username}}
                                                             </div>
                                                         </div>
@@ -51,16 +56,15 @@
                                                         
                                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                             <div class="field-holder">
-                                                                <label>Password</label>
-                                                                {{form.password}}
-                                                            </div>
+                                                                <label>Password</label>{{form.password}}
+                                                           </div>
                                                         </div>
                                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                             <div class="field-holder">
-                                                                <label>Confirm Password</label>
-                                                                {{form.confirm_password}}
+                                                                <label>Confirm Password</label>{{form.confirm_password}}                                                              
                                                             </div>
                                                         </div>
+                                                        
                                                     </li>
                                                 </ul>
                                             </div>

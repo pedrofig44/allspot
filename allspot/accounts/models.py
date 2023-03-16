@@ -49,13 +49,13 @@ class UserManager(BaseUserManager):
 # create a custom user model that extends AbstractBaseUser
 class User(AbstractBaseUser):
     # define constants to be used for user roles
-    RESTAURANT = 1
+    VENDOR = 1
     CUSTOMER = 2
     
     # create a tuple of choices for user roles
     ROLE_CHOICE = (
-        (RESTAURANT, 'Restaurant'),
-        (CUSTOMER, 'Customer'),
+        (VENDOR, 'Vendor'),
+        (CUSTOMER, 'Utilizador'),
     )
     
     # define user model fields
@@ -110,6 +110,6 @@ class UserProfile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
-    def _str_(self):
+    def __str__(self):
         return self.user.email
 
