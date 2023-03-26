@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_decode
-
+from vendor.models import Vendor
 
 
 # Restringir o vendedor de ter acesso à página dos clientes
@@ -32,7 +32,7 @@ def check_role_customer(user):
 def registerUser(request):
     if request.user.is_authenticated:
         messages.warning(request, 'O utilizador já têm a conta iniciada.')
-        return redirect('dashboard')
+        return redirect('custoDashboard')
     elif request.method =='POST':
         print(request.POST)
         form = UserForm(request.POST)
@@ -58,7 +58,7 @@ def registerUser(request):
             mail_subject = 'Por favor ative a sua conta.'
             email_template = 'accounts/emails/account_verification_email.html'
             send_verification_email(request, user, mail_subject, email_template)
-            messages.success(request, 'A tua conta foi criada com sucesso.')
+            messages.success(request, 'A tua conta foi criada com sucesso. Por favor verifique o seu e-mail e ative a sua conta.')
 
             return redirect('registerUser')
         else:
@@ -74,7 +74,7 @@ def registerUser(request):
 def registerVendor(request):
     if request.user.is_authenticated:
         messages.warning(request, 'O utilizador já têm a conta iniciada.')
-        return redirect('dashboard')
+        return redirect('vendorDashboard')
     elif request.method == 'POST':
         # Store the data and create user
         form = UserForm(request.POST)
@@ -169,8 +169,12 @@ def custoDashboard(request):
 
 @login_required(login_url='login')
 @user_passes_test(check_role_vendor)
-def vendorDashboard(request):
-    return render (request, 'accounts/vendorDashboard.html')
+def vendorDashboard(request): 
+    vendor = Vendor.objects.get(user=request.user)
+    context = {
+        'vendor': vendor,
+    }
+    return render (request, 'accounts/vendorDashboard.html', context)
 
 
 def forgot_password(request):

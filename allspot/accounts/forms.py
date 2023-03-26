@@ -18,3 +18,9 @@ class UserForm(forms.ModelForm):
             raise forms.ValidationError(
                 "As passwords inseridas não são iguais."
             )
+        
+
+#class UserProfileForm(forms.ModelForm):
+#    class Meta:
+#        model = UserProfile
+#        fields = ['']

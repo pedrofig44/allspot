@@ -1,0 +1,13 @@
+{% autoescape off %} 
+
+Olá {{user.first_name}},
+
+{% if is_approved %}
+Parabéns! O teu restaurante foi aprovado pela equipa na AllSpot.
+
+{% else %}
+Desculpa, mas o seu serviço não é elegível para a nossa plataforma.
+
+{% endif %}
+
+{% endautoescape %}
