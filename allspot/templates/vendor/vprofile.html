@@ -30,7 +30,7 @@
 																		<li class="gal-img">
 																			<div class="drag-list">
 																				<div class="item-thumb">
-																					<img class="thumbnail" src="assets/extra-images/listing-logo18.png" alt="">
+																					<img class="thumbnail" src="{{profile.profile_picture.url}}" alt="">
 																				</div>
 																			</div>
 																		</li>
@@ -39,9 +39,10 @@
 																<div class="text-holder">
 																	<label>Atualizar Logo</label>
 																	<div class="upload-gallery">
-																		<input type="file" class="btn btn-info" name="profile_picture">
+																		{{profile_form.profile_picture}}
 																	</div>
 																</div>
+																<label class="text-danger">{{ profile_form.profile_picture.errors }}</label>
 															</div>
 														</div>
 														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -51,7 +52,7 @@
 																		<li class="gal-img">
 																			<div class="drag-list">
 																				<div class="item-thumb">
-																					<img class="thumbnail" src="assets/extra-images/cover-photo01.jpg" alt="">
+																					<img class="thumbnail" src="{{profile.cover_photo.url}}" alt="Cover Photo">
 																				</div>
 																			</div>
 																		</li>
@@ -60,10 +61,10 @@
 																<div class="text-holder">
 																	<label>Atualizar Imagem de Capa</label>
 																	<div class="upload-gallery">
-																		<input type="file" class="btn btn-info" name="cover_photo">
-																	</div>
-																	
+																		{{profile_form.cover_photo}}
+																	</div>																	
 																</div>
+																<label class="text-danger">{{ profile_form.cover_photo.errors }}</label>
 															</div>
 														</div>
 														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -73,7 +74,7 @@
 																		<li class="gal-img">
 																			<div class="drag-list">
 																				<div class="item-thumb">
-																					<img class="thumbnail" src="assets/extra-images/cover-photo01.jpg" alt="">
+																					<img class="thumbnail" src="{{vendor.vendor_license.url}}" alt="">
 																				</div>
 																			</div>
 																		</li>
@@ -82,16 +83,58 @@
 																<div class="text-holder">
 																	<label>Atualizar Licensa</label>
 																	<div class="upload-gallery">
-																		<input type="file" class="btn btn-info" name="license">
+																		{{vendor_form.vendor_license}}
 																	</div>
-																	
 																</div>
+																<label class="text-danger">{{ vendor_form.vendor_license.errors }}</label>
 															</div>
 														</div>
 														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 															<div class="field-holder">
 																<label>Nome do Serviço</label>
-																<input type="text" placeholder="i.e Pizza Hut" class="foodbakery-dev-req-field">
+																{{vendor_form.vendor_name}}																
+															</div>
+														</div>
+														<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+															<div class="field-holder">
+																<label>Morada</label>
+																{{profile_form.address}}																
+															</div>
+														</div>
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<div class="field-holder">
+																<label>País</label>
+																{{profile_form.country}}																
+															</div>
+														</div>
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<div class="field-holder">
+																<label>Distrito</label>
+																{{profile_form.district}}																
+															</div>
+														</div>
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<div class="field-holder">
+																<label>Concelho</label>
+																{{profile_form.concelho}}																
+															</div>
+														</div>
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<div class="field-holder">
+																<label>Código Postal</label>
+																{{profile_form.codigo_postal}}																
+															</div>
+														</div>
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<div class="field-holder">
+																<label>Latitude</label>
+																{{profile_form.latitude}}																
+															</div>
+														</div>
+														<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+															<div class="field-holder">
+																<label>Longitude</label>
+																{{profile_form.longitude}}															
 															</div>
 														</div>
 														
@@ -101,10 +144,11 @@
 											<div>
 												<div class="field-holder">
 													<div class="payment-holder input-button-loader">
-														<input class="update-restaurant" type="submit" value="Update Restaurant">
+														<input class="update-restaurant" type="submit" value="Atualizar o Serviço">
 													</div>
 												</div>
 											</div>
+											{% include 'includes/alerts.html' %}
 										</div>
 									</form>
 									<!-- My Restaurants Form End -->                                                      
