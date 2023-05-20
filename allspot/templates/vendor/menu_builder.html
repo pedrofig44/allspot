@@ -1,0 +1,50 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- Main Section Start -->
+<div class="main-section">
+    <div class="page-section account-header buyer-logged-in">
+        {% include 'includes/cover.html' %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    {% include 'includes/vendor_sidebar.html' %}
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <div class="user-dashboard loader-holder">
+                        <div class="user-holder">
+                            <h2>Criar o Menu</h2>
+                            <hr>
+                            <h6>Categorias do Menu</h6>
+                            <a href="#" class="btn btn-success float-right m-1"><i class="fa fa-plus" aria-hidden="true"></i> Adiconar Prato</a>
+                            <a href="{% url 'add_category' %}" class="btn btn-info float-right m-1"><i class="fa fa-plus" aria-hidden="true"></i> Adiconar Categoria</a>
+                            <table class="table table-hover table-borderless">
+                                <tbody>
+                                {% for cat in categories %}
+                                  <tr>
+                                    <td class="text-left">{{ forloop.counter }}</td>
+                                    <td class="text-left">
+                                        <a href="{% url 'fooditems_by_category' cat.id %}"><p class="mb-0 font-weight-bold">{{ cat }}</p>
+                                        <small class="text-muted">{{ cat.description }}</small></a>
+                                    </td>
+                                    <td><a href="{% url 'edit_category' cat.id %}"><i class="fa fa-pencil" aria-hidden="true"></i></a> &nbsp; <a href="{% url 'delete_category' cat.id %}" onclick="return confirm('De certeza que queres apagar esta categoria?')"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
+                                  </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            {% include 'includes/alerts.html' %}
+								                                                     
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Main Section End -->
+
+
+
+{% endblock %}
