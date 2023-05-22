@@ -78,10 +78,10 @@ def registerVendor(request):
     elif request.method == 'POST':
         # Store the data and create user
         form = UserForm(request.POST)
-        v_form = VendorForm(request.POST)
+        # v_form = VendorForm(request.POST)
         # se o form tiver ficheiros o código é o seguinte:
-        #v_form = VendorForm(request.POST, request.FILES)
-        if form.is_valid() and v_form.is_valid:
+        v_form = VendorForm(request.POST, request.FILES)
+        if form.is_valid() and v_form.is_valid():
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
             username = form.cleaned_data['username']
@@ -105,6 +105,8 @@ def registerVendor(request):
         else:
             print('Formulário é inválido')
             print(form.errors)
+            print(v_form)
+            
     else:
         form = UserForm()
         v_form = VendorForm()

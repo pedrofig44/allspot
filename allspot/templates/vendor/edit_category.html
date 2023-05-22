@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<!-- Main Section Start -->
+<!-- Main Section Start --> 
 <div class="main-section">
     <div class="page-section account-header buyer-logged-in">
         {% include 'includes/cover.html' %}
@@ -16,7 +16,9 @@
                     <div class="user-dashboard loader-holder">
                         <div class="user-holder">
                             <h2>Criar o Menu</h2>
-                            <hr>                            
+                            <hr>
+                            <!-- <button class="btn btn-secondary" onclick="history.back()"><i class="fa fa-angle-left" aria-hidden="true"></i> Voltar</button>
+                            <br><br> -->                         
                             <h6>Editar Categorias</h6>
                             <form action="{% url 'edit_category' category.id %}" method="POST">
                                 {% csrf_token %}
@@ -45,6 +47,7 @@
                                         
 
                                 <button type="submit" class="btn btn-info"><i class="fa fa-check" aria-hidden="true"></i> Atualizar</button>
+                                <a href="{% url 'delete_category' category.id %}" onclick="return confirm('De certeza que queres apagar esta categoria?')" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Apagar</a>
                             </form>
 
 								                                                     
